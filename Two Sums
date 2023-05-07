@@ -1,0 +1,48 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int diff = 0;
+        int i = 0;
+
+        //list to store the indices
+        ArrayList<Integer> list = new ArrayList<>();
+
+        while(i<nums.length){
+            //finding diff
+            if(target>=nums[i]){
+                diff = target-nums[i];
+            }
+            else{
+                diff= nums[i]-target;
+            }
+            int j = i+1;
+            //check for diff in array
+            while(j<nums.length){
+                //if found, add i and j into a list
+                if(diff==nums[j]){
+                    list.add(i);
+                    list.add(j);
+                    break;
+                }
+                //if not found, and j++
+                else{
+                    j++;
+                }
+            }
+            
+            //if got answer dy, break loop
+            if(!list.isEmpty()){
+                break;
+            }
+            //if no answer, continue loop
+            else{
+                i++;
+                
+            }
+        }
+        
+
+        // Convert the ArrayList to an array of ints
+        int[] array = list.stream().mapToInt(Integer::intValue).toArray();
+        return array;
+    }
+}
