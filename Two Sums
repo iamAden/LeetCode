@@ -8,12 +8,8 @@ class Solution {
 
         while(i<nums.length){
             //finding diff
-            if(target>=nums[i]){
-                diff = target-nums[i];
-            }
-            else{
-                diff= nums[i]-target;
-            }
+            diff = target-nums[i];
+            
             int j = i+1;
             //check for diff in array
             while(j<nums.length){
