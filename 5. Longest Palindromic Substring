@@ -1,0 +1,34 @@
+class Solution {
+    //shoutout to Nick White on youtube
+    public String longestPalindrome(String s){
+        if (s==null){
+            return "none";
+        }
+
+        int start = 0; //the beginning index of longest palindrome
+        int end = 0; //end index of longest palindrome
+
+        //loop characters in string left to right
+        for (int i = 0; i<s.length(); i++){
+            int a = expandFromMiddle(s, i, i); //for palindromes that have a unique middle index "aba"
+            int b = expandFromMiddle(s, i, i+1); //for palindromes that dont  "abba"
+            int len = Math.max(a, b);
+            if(len > end - start + 1){
+                start = i - ((len-1)/2);
+                end = i + (len/2);
+            }
+
+        }
+        return s.substring(start, end + 1);
+    }
+    public int expandFromMiddle(String s, int left, int right){
+        if (s.length()==1){return 0;}
+
+        while(left>=0 && right<s.length() && s.charAt(left)==s.charAt(right)){
+            left --;
+            right ++;
+        }
+        //return the length of the palindrome found
+        return ((right-1) - (left+1) + 1);
+    }
+}
