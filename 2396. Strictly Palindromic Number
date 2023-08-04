@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isStrictlyPalindromic(int n) {
+        
+        //step 1: convert to binary
+        int x = 0;
+        while(n!=0){
+            x =  n%2 + x*10; //x: original binary
+            n /= 2;
+        }
+        //step 2: reverse the binary
+        int r = 0;
+        while (x!=0){
+            r = r*10 + x%10;
+            x /= 10;
+        }
+        //step 3: compare binary with its reverse
+        if(x==r){
+            return true;
+        }
+        return false;
+    }
+
+}
